@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!--应用层业务逻辑层-->
+    <modelVersion>4.0.0</modelVersion>
+    <!--子模块继承的父工程-->
+    <parent>
+        <groupId>com.dcqc</groupId>
+        <artifactId>multi-prototype</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <!--子模块基本信息；子模块默认的打包方式是jar-->
+    <artifactId>biz</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>biz</name>
+    <description>biz 应用层业务逻辑层子模块</description>
+
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+
+    <dependencies>
+        <!--引入父模块中声明的依赖-->
+        <dependency>
+            <groupId>com.dcqc</groupId>
+            <artifactId>dao</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.dcqc</groupId>
+            <artifactId>service</artifactId>
+        </dependency>
+
+        <!--子模块依赖-->
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

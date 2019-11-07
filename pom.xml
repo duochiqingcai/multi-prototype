@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- 1.继承说明：这里继承SpringBoot提供的父工程 -->
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.0.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <!--2.模块基本信息-->
+    <groupId>com.dcqc</groupId>
+    <artifactId>multi-prototype</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>multi-prototype</name>
+    <description>dcqc's multi-prototype project~</description>
+
+    <!--3.属性说明-->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+
+        <!--在properties中统一控制依赖包的版本-->
+        <prototype.version>0.0.1-SNAPSHOT</prototype.version>
+    </properties>
+
+    <!--依赖说明：统一管理依赖的版本号;dependencies 即使在子项目中不写该依赖项，那么子项目仍然会从父项目中继承该依赖项（全部继承）
+        dependencyManagement 里只是声明依赖，并不实现引入，因此子项目需要显示的声明需要用的依赖。-->
+    <dependencyManagement>
+        <dependencies>
+            <!--声明子模块-->
+            <dependency>
+                <groupId>com.dcqc</groupId>
+                <artifactId>biz</artifactId>
+                <version>${prototype.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dcqc</groupId>
+                <artifactId>dao</artifactId>
+                <version>${prototype.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dcqc</groupId>
+                <artifactId>service</artifactId>
+                <version>${prototype.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dcqc</groupId>
+                <artifactId>web</artifactId>
+                <version>${prototype.version}</version>
+            </dependency>
+
+            <!--声明模块公共依赖-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter</artifactId>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <scope>test</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.junit.vintage</groupId>
+                        <artifactId>junit-vintage-engine</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
